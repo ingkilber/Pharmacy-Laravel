@@ -5,15 +5,11 @@
 
 # Home - Iniciar Sesión
 
-<p align="center">
-  <img src="./assests/img/Iniciar-Sesion.png?raw=true" />
-</p>
+![Home](https://github.com/ingkilber/Pharmacy-Laravel/blob/main/assets/img/Iniciar-Sesion.png)
 
 # Panel de Admistración
 
-<p align="center">
-  <img src="./assests/img/Panel-de-Administracion.png?raw=true" />
-</p>
+![dashboard](https://github.com/ingkilber/Pharmacy-Laravel/blob/main/assets/img/Panel-de-Administracion.png)
 
 # Plantilla Utilizada
 

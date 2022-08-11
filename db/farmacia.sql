@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-09-2021 a las 14:35:01
--- Versión del servidor: 10.4.20-MariaDB
--- Versión de PHP: 8.0.9
+-- Tiempo de generación: 11-08-2022 a las 21:08:12
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `v_farmacia`
+-- Base de datos: `farmacia`
 --
 
 -- --------------------------------------------------------
@@ -33,6 +33,18 @@ CREATE TABLE `cliente` (
   `telefono` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `direccion` varchar(200) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`idcliente`, `nombre`, `telefono`, `direccion`) VALUES
+(2, 'yerfer', '4523453453', 'dfdd'),
+(3, 'rosmely', '45210', 'asdfsf'),
+(4, 'Mati', '452452', 'dfhgfgh'),
+(5, 'maria', '564563', 'dfgd'),
+(6, 'helen', '7854', 'dsgdfgc'),
+(7, 'khyliam', '78654523', 'dgdfgfdg');
 
 -- --------------------------------------------------------
 
@@ -53,7 +65,7 @@ CREATE TABLE `configuracion` (
 --
 
 INSERT INTO `configuracion` (`id`, `nombre`, `telefono`, `email`, `direccion`) VALUES
-(1, 'Sistemas Free', '98745698', 'ana.info1999@gamil.com', 'Trujillo');
+(1, 'Sistemas Farmacéutico', '98745698', 'admin@gamil.com', 'Argentina');
 
 -- --------------------------------------------------------
 
@@ -66,6 +78,25 @@ CREATE TABLE `detalle_permisos` (
   `id_permiso` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `detalle_permisos`
+--
+
+INSERT INTO `detalle_permisos` (`id`, `id_permiso`, `id_usuario`) VALUES
+(1, 1, 12),
+(2, 2, 12),
+(3, 3, 12),
+(4, 4, 12),
+(5, 5, 12),
+(6, 6, 12),
+(7, 7, 12),
+(8, 8, 12),
+(9, 9, 12),
+(10, 3, 13),
+(11, 5, 13),
+(12, 6, 13),
+(13, 8, 13);
 
 -- --------------------------------------------------------
 
@@ -99,6 +130,16 @@ CREATE TABLE `detalle_venta` (
   `total` decimal(10,2) NOT NULL DEFAULT 0.00
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `detalle_venta`
+--
+
+INSERT INTO `detalle_venta` (`id`, `id_producto`, `id_venta`, `cantidad`, `descuento`, `precio`, `total`) VALUES
+(1, 3, 1, 5, '0.00', '0.90', '4.50'),
+(2, 3, 2, 25, '0.00', '0.90', '22.50'),
+(3, 1, 2, 5, '0.00', '10.00', '50.00'),
+(4, 1, 3, 8, '0.00', '10.00', '80.00');
+
 -- --------------------------------------------------------
 
 --
@@ -110,6 +151,14 @@ CREATE TABLE `laboratorios` (
   `laboratorio` varchar(100) NOT NULL,
   `direccion` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `laboratorios`
+--
+
+INSERT INTO `laboratorios` (`id`, `laboratorio`, `direccion`) VALUES
+(1, 'Bayer', 'Alemania'),
+(2, 'Generico', 'Mundial');
 
 -- --------------------------------------------------------
 
@@ -149,6 +198,14 @@ CREATE TABLE `presentacion` (
   `nombre_corto` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `presentacion`
+--
+
+INSERT INTO `presentacion` (`id`, `nombre`, `nombre_corto`) VALUES
+(1, 'Original', 'Orig'),
+(2, 'Generico', 'Gener');
+
 -- --------------------------------------------------------
 
 --
@@ -167,6 +224,15 @@ CREATE TABLE `producto` (
   `vencimiento` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `producto`
+--
+
+INSERT INTO `producto` (`codproducto`, `codigo`, `descripcion`, `precio`, `existencia`, `id_lab`, `id_presentacion`, `id_tipo`, `vencimiento`) VALUES
+(1, '123456', 'aspirina', '10.00', 12, 2, 1, 1, '2023-11-30'),
+(2, '654123', 'laxante', '30.00', 25, 2, 2, 4, '2024-06-05'),
+(3, '6454123', 'Atamel', '0.90', 50, 1, 1, 1, '2022-08-12');
+
 -- --------------------------------------------------------
 
 --
@@ -177,6 +243,16 @@ CREATE TABLE `tipos` (
   `id` int(11) NOT NULL,
   `tipo` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tipos`
+--
+
+INSERT INTO `tipos` (`id`, `tipo`) VALUES
+(1, 'Analgésicos'),
+(2, 'Antialérgicos'),
+(3, 'Antiácidos '),
+(4, 'Antidiarreicos ');
 
 -- --------------------------------------------------------
 
@@ -197,8 +273,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idusuario`, `nombre`, `correo`, `usuario`, `clave`) VALUES
-(1, 'Sistemas Free', 'ana.info1999@gmail.com', 'admin', '21232f297a57a5a743894a0e4a801fc3'),
-(9, 'Maria Sanchez', 'maria@gmail.com', 'maria', '263bce650e68ab4e23f28263760b9fa5');
+(1, 'administrador', 'admin@gmail.com', 'admin', '21232f297a57a5a743894a0e4a801fc3'),
+(12, 'kilber', 'kilber@gmail.com', 'kilber', 'e10adc3949ba59abbe56e057f20f883e'),
+(13, 'vendedor', 'vendedor@gmailcom', 'vendedor', '0407e8c8285ab85509ac2884025dcf42');
 
 -- --------------------------------------------------------
 
@@ -213,6 +290,15 @@ CREATE TABLE `ventas` (
   `id_usuario` int(11) NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `ventas`
+--
+
+INSERT INTO `ventas` (`id`, `id_cliente`, `total`, `id_usuario`, `fecha`) VALUES
+(1, 4, '4.50', 12, '2022-08-11 15:09:05'),
+(2, 7, '72.50', 12, '2022-08-11 17:24:43'),
+(3, 6, '80.00', 1, '2022-08-11 17:28:58');
 
 --
 -- Índices para tablas volcadas
@@ -306,7 +392,7 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `configuracion`
@@ -318,25 +404,25 @@ ALTER TABLE `configuracion`
 -- AUTO_INCREMENT de la tabla `detalle_permisos`
 --
 ALTER TABLE `detalle_permisos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_temp`
 --
 ALTER TABLE `detalle_temp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_venta`
 --
 ALTER TABLE `detalle_venta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `laboratorios`
 --
 ALTER TABLE `laboratorios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `permisos`
@@ -348,31 +434,31 @@ ALTER TABLE `permisos`
 -- AUTO_INCREMENT de la tabla `presentacion`
 --
 ALTER TABLE `presentacion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `codproducto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codproducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tipos`
 --
 ALTER TABLE `tipos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas

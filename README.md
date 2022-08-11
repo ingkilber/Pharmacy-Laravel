@@ -6,13 +6,13 @@
 # Home - Iniciar Sesión
 
 <p align="center">
-  <img src="./img/Iniciar-Sesion.png?raw=true" />
+  <img src="./assests/img/Iniciar-Sesion.png?raw=true" />
 </p>
 
 # Panel de Admistración
 
 <p align="center">
-  <img src="./img/Panel-de-Administracion.png?raw=true" />
+  <img src="./assests/img/Panel-de-Administracion.png?raw=true" />
 </p>
 
 # Plantilla Utilizada

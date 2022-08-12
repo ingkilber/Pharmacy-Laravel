@@ -1,7 +1,7 @@
-# Sistema Farmacéutico PHP y MYSQL (Framework Laravel)
+# Sistema Farmacéutico PHP y MYSQL
 
-- Sistema Online para gestion de Ventas, Stock, Compras, Clientes, Proveedores, Pedidos. Control de Stock Online. 
-- Sistema de Facturacion...
+- Sistema Online para gestion de Ventas, Stock, Compras, Clientes, Proveedores, Pedidos. Control de Stock. 
+- Sistema de Facturación...
 
 # Home - Iniciar Sesión
 
@@ -17,7 +17,7 @@ https://github.com/creativetimofficial/material-dashboard
 
 ## 🚀 Tecnología
 
-- PHP (Laravel)
+- PHP
 - MYSQL
 - CSS (Bootstrap)
 
@@ -25,10 +25,10 @@ https://github.com/creativetimofficial/material-dashboard
 ## ✋🏻 requisitos previos
 
 - [XAMPP](https://www.apachefriends.org/es/index.html)
-- [Framework-Laravel](https://laravel.com/)
+- [VS Code](https://code.visualstudio.com/)
 
 ## 🔥 Instalar & ejecutar
 
 1. Clonar o descargar el repositorio;
 2. Crear BD e importar;
-3. Install dependecias;
+3. Instalar dependecias;
